@@ -288,7 +288,16 @@
         (Java was really popular at the time so Netscape just hijacked the name.)<!-- .element: class="note" -->
       </script>
     </section>
+    
+    <section class="slide centered" data-markdown>
+      <script type="text/template">
+        # JavaScript in the Browser
 
+        JavaScript is typically meant to be run in a web browser<br> (e.g. Safari, Firefox, Chrome, Internet Explorer).
+
+        ![javascript gears diagram](framework/img/workshop/javascript-gears.gif)<!-- .element: style="height:55vh;width:auto;" -->
+      </script>
+    </section>
     <section class="slide centered" data-markdown>
       <script type="text/template">
         # JavaScript in the Browser
@@ -299,15 +308,6 @@
       </script>
     </section>
 
-    <section class="slide centered" data-markdown>
-      <script type="text/template">
-        # JavaScript in the Browser
-
-        JavaScript is typically meant to be run in a web browser<br> (e.g. Safari, Firefox, Chrome, Internet Explorer).
-
-        ![javascript gears diagram](framework/img/workshop/javascript-gears.gif)<!-- .element: style="height:55vh;width:auto;" -->
-      </script>
-    </section>
 
     <section class="slide centered" data-markdown>
       <script type="text/template">
@@ -475,16 +475,21 @@
         What is something that you do that's very repetitive or a hassle (like paying for parking)? Wouldn't it be great if it was automated?
 
         * **Repetitive**
-          1.  Find bank machine
-          2.  Pull out bank card
+          1.  Find an ATM
+          2.  Insert the bank card
           3.  Get money out from ATM
-          4.  Buy chips so you can make change
-          5.  Put change into machine
+          4.  Take out the bank card
+          5.  Put money into ticket machine
           6.  Take receipt
+
+          <img>
+
         * **Automated!**
-          1.  Pull the PayPass credit card from your wallet
-          2.  Tap
+          1.  Pull the Tap bank card from your wallet
+          2.  Tap bank card on the ticket machine
           3.  Take receipt
+
+          <img src="framework/img/workshop/tap_card.svg">
       </script>
     </section>
 
@@ -492,8 +497,12 @@
       <script type="text/template">
         #Automating Repetitive Tasks
 
-        1.  Pull the PayPass credit card from your wallet
-        2.  **Tap**
+        1.  Pull the Tap credit card from your wallet
+        2.  **Tap** bank card on the ticket machine
+          - Talks to the bank
+          - Gets the required money
+          - Sends money to the ticket machine
+          - Generates receipt
         3.  Take receipt
 
         Step 2 can be thought of as a function. We can't see all of the steps that happen but performing the action will execute some instructions that will allow automatic payments.
@@ -503,6 +512,7 @@
         ```
         tapCard()
         ```
+        <img src="framework/img/workshop/function-blackbox.png">
       </script>
     </section>
 
@@ -516,7 +526,7 @@
 
         Click "run" below to see what happens when the `prompt()` function is executed.
 
-        <img onclick="prompt()" src="framework/img/workshop/rawbot-run.png" alt="run code">
+        <img onclick="prompt()" src="framework/img/workshop/rawbot-run.png" alt="run code" style="cursor:pointer;">
       </script>
     </section>
 
@@ -622,36 +632,15 @@
         Assign a value to the variable using the equals `=` symbol. Remember, to end the statement with a semicolon. Now the computer will remember your name!
 
         ```
-        name = "Yourname";
+        name = "Irusha";
         ```
         You can also assign a value and declare a variable at the same time.
 
         ```
-        var name = "Yourname";
+        var name = "Irusha";
         ```
       </script>
     </section>
-
-    <section class="slide" data-markdown>
-      <script type="text/template">
-        #Another Function: `write()`
-
-        We still need a way for the computer to say hello back to you.  Let's use another function, `write()`, to output the response.
-
-        This time, the function will be attached to the HTML page, aka the **document**.  The text to be outputted should be included within the parentheses.
-
-        ```
-        document.write("hello"); // will output "hello" onto the page.
-        ```
-        It can also output the value of the variable. Note that the variable doesn't require quotes.
-
-        ```
-        var name = "Yourname";
-        document.write(name); // will output "Yourname" onto the page.
-        ```
-      </script>
-    </section>
-
     <section class="slide" data-markdown>
       <script type="text/template">
         # Variables and user input
@@ -659,18 +648,19 @@
         The previous example showed how to assign a specific value to the `name` variable.
 
         ```
-        var name = "Yourname";
+        var name = "Irusha";
         ```
 
         But what if we don't know what that value is going to be?
 
         Remember `prompt()`? This function triggers a popup box that allows user input.
+        
+        ** In addition, `prompt()` outputs the user input**
 
         The prompt function can also be assigned to a variable, thus saving the value of the user input.
 
       </script>
     </section>
-
     <section class="slide" data-markdown>
       <script type="text/template">
         # Class Exercise: Say My Name, part 2
@@ -683,12 +673,32 @@
           <li class="delayed">
             <p>Remember my name</p>
             <code class="delayed">var name = ?</code>
+            <br>
             <code class="delayed">var name = prompt("What is your name?");</code>
           </li>
         </ol>
 
         Back in <!-- .element: class="delayed" --> **1-hello.html**, let's update our program.
       </script>
+    </section>
+    <section class="slide" data-markdown>
+        <script type="text/template">
+          #Another Function: `write()`
+  
+          We still need a way for the computer to say hello back to you.  Let's use another function, `write()`, to output the response.
+  
+          This time, the function will be attached to the HTML page, aka the **document**.  The text to be outputted should be included within the parentheses.
+  
+          ```
+          document.write("hello"); // will output "hello" onto the page.
+          ```
+          It can also output the value of the variable. Note that the variable doesn't require quotes.
+  
+          ```
+          var name = "Irusha";
+          document.write(name); // will output "Irusha" onto the page.
+          ```
+        </script>
     </section>
 
     <section class="slide" data-markdown>
@@ -865,11 +875,16 @@
         Using the equals (`=`) symbol in Javascript is NOT the same as in math.
 
         `var total = 1 + 1` is not the same as `1 + 1 = 2`
+        <br>
+        <br>
+        assignment vs. equality
+        <br>
+        <br>
 
         `var total = 1 + 1` means:
 
-        * _evaluate_ everything to the _right_ of the equals sign (`1 + 1`)
-        * then _assign_ this value (`2`) to the variable on the _left_ side.
+        1. **_evaluate_** everything to the _right_ of the equals sign (`1 + 1`)
+        2. **_assign_** this value (`2`) to the variable on the _left_ side.
       </script>
     </section>
 
@@ -951,6 +966,11 @@
 
       </script>
     </section>
+    <section class="slide title" data-markdown data-toc>
+      <script type="text/template">
+        #Doing Math in JavaScript
+      </script>
+    </section>
 
     <section class="slide" data-markdown data-toc>
       <script type="text/template">
@@ -1004,7 +1024,7 @@
         var discount = 0.15; // 15%
         ```
 
-        Follow the instructions in the comments to figure out the subtotal of 1 t-shirt and 1 Android plushie, with a 15% discount.
+        Follow the instructions in the comments to figure out the **subtotal of 1 t-shirt and 1 Android plushie, with a 15% discount**.
       </script>
     </section>
 
@@ -1050,7 +1070,7 @@
     <section class="slide" data-markdown>
       <script type="text/template">
         #Recap: Javascript Arithmetic
-        1. Arithmetic <!-- .element: class="delayed" -->
+        1. Operators <!-- .element: class="delayed" -->
       </script>
     </section>
 
@@ -1160,7 +1180,9 @@ var update = document.getElementById('update'); // HTML element to be updated
 function moreLove(){
   loves = loves + 1; // take the current value of "love" and adds 1
   update.innerHTML = loves; // updates the HTML element with the current value of "loves"
-}</code></pre>
+}
+update.onclick = moreLove; // assign the moreLove function to run on button click
+</code></pre>
     </section>
 
     <section class="slide" data-markdown data-toc>
@@ -1195,7 +1217,7 @@ function moreLove(){
         var takeout = "Fried Rice";
         ```
         <br>
-        An **object** holds a collection of values. And the syntax is different.
+        An **object** holds a collection of variables. And the syntax is different.
 
         <img class="left" width="500" src="framework/img/workshop/object-bento-box.png" alt="bento box object">
 
@@ -1215,7 +1237,7 @@ function moreLove(){
       <script type="text/template">
         # Object Properties
 
-        The "compartments" of objects are called **properties**. There are a few ways to access and set the value of the property but today we'll be using *dot notation*.
+        The variables inside objects are called **properties**. There are a few ways to access and set the value of the property but today we'll be using *dot notation*.
 
         ```javascript
         var myObject = {}; // create a new object
